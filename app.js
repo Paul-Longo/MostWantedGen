@@ -199,17 +199,17 @@ function searchById(people){
   }
 }
 
-function searchBySpouse(people){
-  let occupationSpouse = promptFor("Enter Id of Spouse")
+function searchByCurrentSpouse(people){
+  let currentSpouse = promptFor("Enter Id of Spouse")
 
-  let foundSpouse = people.filter(function(possibleMatch){
-    if (possibleMatch.Spouse === occupationSpouse){
+  let foundCurrentSpouse = people.filter(function(possibleMatch){
+    if (possibleMatch.currentSpouse === currentSpouse){
       return true;
     }else {
       return false;
     }
   });
-  return foundSpouse;
+  return foundCurrentSpouse;
 }
 
 
