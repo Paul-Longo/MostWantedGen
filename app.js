@@ -42,24 +42,20 @@ function app(people) {
     return app(people); // restart
   }
 
-  let displayOption = promptFor(
-    "Found " +
-      person[0].firstName +
-      " " +
-      person[0].lastName +
-      " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'",
-    autoValid
-  );
+  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch (displayOption) {
     case "info":
-      // TODO: get person's info
+      displayPeople(person, people);
+      mainMenu(person, people);
       break;
     case "family":
-      // TODO: get person's family
+      displayFamily(person, people);
+      mainMenu(person, people);
       break;
     case "descendants":
-      // TODO: get person's descendants
+      displayDescendants(person, people);
+      mainMenu(person, people);
       break;
     case "restart":
       app(people); // restart
@@ -99,9 +95,31 @@ function searchByName(people) {
 }
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people) {}
+function searchByEyeColor(people) {
+  let eyeColorSelection = promptFor("Enter an eye color.")
 
-//TODO: add other trait filter functions here.
+  let foundEyeColor = people.filter(function (potentialMatch) {
+    if (potentialMatch.eyeColor === eyeColorSelection) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  return foundEyeColor;
+}
+
+function searchByGender(people){
+  let genderSelection = promptFor("Enter Male or Female")
+
+  let foundGender = people.filter(function(possibleMatch){
+    if (possibleMatch.gender === genderSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundGender;
+}
 
 function searchByTrait(people) {
   let traitFilter
@@ -206,6 +224,6 @@ function autoValid(input) {
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
-function customValidation(input) {}
+function customValidation(input) { }
 
 //#endregion
