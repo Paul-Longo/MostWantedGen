@@ -121,6 +121,98 @@ function searchByGender(people){
   return foundGender;
 }
 
+function searchByDOB(people){
+  let dobSelection = promptFor("Enter Date of Birth")
+
+  let foundDOB = people.filter(function(possibleMatch){
+    if (possibleMatch.DOB === dobSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundDOB;
+}
+
+function searchByHeight(people){
+  let heightSelection = promptFor("Enter Height")
+
+  let foundHeight = people.filter(function(possibleMatch){
+    if (possibleMatch.DOB === heightSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundHeight;
+}
+
+function searchByWeight(people){
+  let weightSelection = promptFor("Enter Weight")
+
+  let foundWeight = people.filter(function(possibleMatch){
+    if (possibleMatch.Weight === weightSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundWeight;
+}
+
+function searchByOccupation(people){
+  let occupationSelection = promptFor("Enter Occupation")
+
+  let foundOccupation = people.filter(function(possibleMatch){
+    if (possibleMatch.Occupation === occupationSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundOccupation;
+}
+
+function searchById(people){
+  let idSelection = promptFor("Enter Id Number")
+
+  let foundId = people.filter(function(possibleMatch){
+    if (possibleMatch.Id === idSelection){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundId;
+
+  function searchByParents(people){
+    let parentsSelection = promptFor("Enter Parents")
+  
+    let foundParents = people.filter(function(possibleMatch){
+      if (possibleMatch.Parents === parentsSelection){
+        return true;
+      }else {
+        return false;
+      }
+    });
+    return foundParents;
+  }
+}
+
+function searchBySpouse(people){
+  let occupationSpouse = promptFor("Enter Id of Spouse")
+
+  let foundSpouse = people.filter(function(possibleMatch){
+    if (possibleMatch.Spouse === occupationSpouse){
+      return true;
+    }else {
+      return false;
+    }
+  });
+  return foundSpouse;
+}
+
+
 function searchByTrait(people) {
   let traitFilter
   let selectTraits = promptFor("What trait would you like to search for? ");
