@@ -8,9 +8,7 @@
 // app is the function called to start the entire application
 function app(people) {
   let searchType = promptFor(
-    "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
-    yesNo
-  ).toLowerCase();
+    "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",yesNo).toLowerCase();
   let searchResults;
   switch (searchType) {
     case "yes":
@@ -25,11 +23,18 @@ function app(people) {
   }
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  mainMenu(searchResults, people);
-}
+  if (searchResults.length === 1){
+    mainMenu(searchResults, people);
 
-// Menu function to call once you find who you are looking for
-function mainMenu(person, people) {
+  } else {
+    for (let i = 0; i < searchResults.length; i++){
+      displayPerson(searchResults[i]);
+      }
+    }
+  }
+
+  // Menu function to call once you find who you are looking for
+  function mainMenu(person, people) {
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if (!person) {
@@ -71,10 +76,38 @@ function mainMenu(person, people) {
 //Filter functions.
 //Ideally you will have a function for each trait.
 /////////////////////////////////////////////////////////////////
+
+//deleted functions of traits 
+
+
+//#region
+
+//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
+function searchByName(people) {
+  let firstName = promptFor("What is the person's first name?", autoValid);
+  let lastName = promptFor("What is the person's last name?", autoValid);
+
+  let foundPerson = people.filter(function (potentialMatch) {
+    if (potentialMatch.firstName === firstName && potentialMatch.lastName === lastName) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  // TODO: find the person single person object using the name they entered.
+  return foundPerson;
+}
+
+//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
+function searchByEyeColor(people) {}
+
+//TODO: add other trait filter functions here.
+
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ");
-  let traitFilter;
-  switch (searchType) {
+  let traitFilter
+  let selectTraits = promptFor("What trait would you like to search for? ");
+  
+  switch (selectTraits) {
     case "gender":
       traitFilter = searchByGender(people);
       break;
@@ -93,36 +126,21 @@ function searchByTrait(people) {
     case "occupation":
       traitFilter = searchByOccupation(people);
       break;
+    case "ID":
+      traitFilter = searchByID(people);
+      break;
+    case "parents":
+      traitFilter = searchByParents(people);
+      break;
+    case "spouse":
+      traitFilter = searchBySpouse(people);
+      break;
   }
-  console.log(traitFilter);
+  return traitFilter;
+  
 }
 
 
-//#region
-
-//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
-function searchByName(people) {
-  let firstName = promptFor("What is the person's first name?", autoValid);
-  let lastName = promptFor("What is the person's last name?", autoValid);
-
-  let foundPerson = people.filter(function (potentialMatch) {
-    if (
-      potentialMatch.firstName === firstName &&
-      potentialMatch.lastName === lastName
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  });
-  // TODO: find the person single person object using the name they entered.
-  return foundPerson;
-}
-
-//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
-function searchByEyeColor(people) {}
-
-//TODO: add other trait filter functions here.
 
 //#endregion
 
@@ -133,13 +151,8 @@ function searchByEyeColor(people) {}
 
 // alerts a list of people
 function displayPeople(people) {
-  alert(
-    people
-      .map(function (person) {
-        return person.firstName + " " + person.lastName;
-      })
-      .join("\n")
-  );
+  alert(people.map(function (person) {
+        return person.firstName + " " + person.lastName;}).join("\n"));
 }
 
 function displayPerson(person) {
@@ -147,6 +160,12 @@ function displayPerson(person) {
   // height, weight, age, name, occupation, eye color.
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "Gender: " + person.gender + "\n";
+  personInfo += "Date of Birth: " + person.dob + "\n";
+  personInfo += "Height: " + person.height + "\n";
+  personInfo += "Weight: " + person.weight + "\n";
+  personInfo += "Eye Color: " + person.eyeColor + "\n";
+  personInfo += "Occupation: " + person.occupation + "\n";
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
