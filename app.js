@@ -7,8 +7,7 @@
 
 // app is the function called to start the entire application
 function app(people) {
-  let searchType = promptFor(
-    "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",yesNo).toLowerCase();
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'",yesNo).toLowerCase();
   let searchResults;
   switch (searchType) {
     case "yes":
@@ -46,7 +45,7 @@ function app(people) {
 
   switch (displayOption) {
     case "info":
-      displayPeople(person, people);
+      displayPerson(person, people);
       mainMenu(person, people);
       break;
     case "family":
@@ -214,39 +213,39 @@ function searchByCurrentSpouse(people){
 
 
 function searchByTrait(people) {
-  let traitFilter
-  let selectTraits = promptFor("What trait would you like to search for? ");
+  let searchType = promptFor("What trait would you like to search for? ");
+  let searchResults 
   
-  switch (selectTraits) {
+  switch (searchType) {
     case "gender":
-      traitFilter = searchByGender(people);
+      searchResults = searchByGender(people);
       break;
     case "DOB":
-      traitFilter = searchByDOB(people);
+      searchResults = searchByDOB(people);
       break;
     case "height":
-      traitFilter = searchByHeight(people);
+      searchResults = searchByHeight(people);
       break;
     case "weight":
-      traitFilter = searchByWeight(people);
+      searchResults = searchByWeight(people);
       break;
     case "eyeColor":
-      traitFilter = searchByEyeColor(people);
+      searchResults = searchByEyeColor(people);
       break;
     case "occupation":
-      traitFilter = searchByOccupation(people);
+      searchResults = searchByOccupation(people);
       break;
     case "ID":
-      traitFilter = searchByID(people);
+      searchResults = searchByID(people);
       break;
     case "parents":
-      traitFilter = searchByParents(people);
+      searchResults = searchByParents(people);
       break;
     case "spouse":
-      traitFilter = searchBySpouse(people);
+      searchResults = searchBySpouse(people);
       break;
   }
-  return traitFilter;
+  return searchResults;
   
 }
 
