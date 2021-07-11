@@ -23,7 +23,7 @@ function app(people) {
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
   if (searchResults.length === 1){
-    mainMenu(searchResults, people);
+    mainMenu(searchResults[0], people);
 
   } else {
     for (let i = 0; i < searchResults.length; i++){
@@ -41,11 +41,11 @@ function app(people) {
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch (displayOption) {
     case "info":
-      displayPerson(person, people);
+      displayPerson(person);
       mainMenu(person, people);
       break;
     case "family":
