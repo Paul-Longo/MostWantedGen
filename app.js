@@ -7,8 +7,7 @@
 
 // app is the function called to start the entire application
 function app(people) {
-  let searchType = promptFor(
-    "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",yesNo).toLowerCase();
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   let searchResults;
   switch (searchType) {
     case "yes":
@@ -23,18 +22,18 @@ function app(people) {
   }
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
-  if (searchResults.length === 1){
-    mainMenu(searchResults, people);
+  if (searchResults.length === 1) {
+    mainMenu(searchResults[0], people);
 
   } else {
-    for (let i = 0; i < searchResults.length; i++){
+    for (let i = 0; i < searchResults.length; i++) {
       displayPerson(searchResults[i]);
-      }
     }
   }
+}
 
-  // Menu function to call once you find who you are looking for
-  function mainMenu(person, people) {
+// Menu function to call once you find who you are looking for
+function mainMenu(person, people) {
   /* Here we pass in the entire person object that we found in our search, as well as the entire original dataset of people. We need people in order to find descendants and other information that the user may want. */
 
   if (!person) {
@@ -42,11 +41,11 @@ function app(people) {
     return app(people); // restart
   }
 
-  let displayOption = promptFor("Found " + person[0].firstName + " " + person[0].lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
+  let displayOption = promptFor("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'", autoValid);
 
   switch (displayOption) {
     case "info":
-      displayPeople(person, people);
+      displayPerson(person);
       mainMenu(person, people);
       break;
     case "family":
@@ -108,90 +107,90 @@ function searchByEyeColor(people) {
   return foundEyeColor;
 }
 
-function searchByGender(people){
+function searchByGender(people) {
   let genderSelection = promptFor("Enter Male or Female")
 
-  let foundGender = people.filter(function(possibleMatch){
-    if (possibleMatch.gender === genderSelection){
+  let foundGender = people.filter(function (possibleMatch) {
+    if (possibleMatch.gender === genderSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundGender;
 }
 
-function searchByDOB(people){
+function searchByDOB(people) {
   let dobSelection = promptFor("Enter Date of Birth")
 
-  let foundDOB = people.filter(function(possibleMatch){
-    if (possibleMatch.DOB === dobSelection){
+  let foundDOB = people.filter(function (possibleMatch) {
+    if (possibleMatch.DOB === dobSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundDOB;
 }
 
-function searchByHeight(people){
+function searchByHeight(people) {
   let heightSelection = promptFor("Enter Height")
 
-  let foundHeight = people.filter(function(possibleMatch){
-    if (possibleMatch.DOB === heightSelection){
+  let foundHeight = people.filter(function (possibleMatch) {
+    if (possibleMatch.DOB === heightSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundHeight;
 }
 
-function searchByWeight(people){
+function searchByWeight(people) {
   let weightSelection = promptFor("Enter Weight")
 
-  let foundWeight = people.filter(function(possibleMatch){
-    if (possibleMatch.Weight === weightSelection){
+  let foundWeight = people.filter(function (possibleMatch) {
+    if (possibleMatch.Weight === weightSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundWeight;
 }
 
-function searchByOccupation(people){
+function searchByOccupation(people) {
   let occupationSelection = promptFor("Enter Occupation")
 
-  let foundOccupation = people.filter(function(possibleMatch){
-    if (possibleMatch.Occupation === occupationSelection){
+  let foundOccupation = people.filter(function (possibleMatch) {
+    if (possibleMatch.Occupation === occupationSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundOccupation;
 }
 
-function searchById(people){
+function searchById(people) {
   let idSelection = promptFor("Enter Id Number")
 
-  let foundId = people.filter(function(possibleMatch){
-    if (possibleMatch.Id === idSelection){
+  let foundId = people.filter(function (possibleMatch) {
+    if (possibleMatch.Id === idSelection) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
   return foundId;
 
-  function searchByParents(people){
+  function searchByParents(person, people) {
     let parentsSelection = promptFor("Enter Parents")
-  
-    let foundParents = people.filter(function(possibleMatch){
-      if (possibleMatch.Parents === parentsSelection){
+
+    let foundParents = people.filter(function (possibleMatch) {
+      if (possibleMatch.Parents === parentsSelection) {
         return true;
-      }else {
+      } else {
         return false;
       }
     });
@@ -199,13 +198,13 @@ function searchById(people){
   }
 }
 
-function searchByCurrentSpouse(people){
+function searchByCurrentSpouse(people) {
   let currentSpouse = promptFor("Enter Id of Spouse")
 
-  let foundCurrentSpouse = people.filter(function(possibleMatch){
-    if (possibleMatch.currentSpouse === currentSpouse){
+  let foundCurrentSpouse = people.filter(function (possibleMatch) {
+    if (possibleMatch.currentSpouse === currentSpouse) {
       return true;
-    }else {
+    } else {
       return false;
     }
   });
@@ -214,42 +213,45 @@ function searchByCurrentSpouse(people){
 
 
 function searchByTrait(people) {
-  let traitFilter
-  let selectTraits = promptFor("What trait would you like to search for? ");
-  
-  switch (selectTraits) {
+  let searchType = promptFor("What trait would you like to search for? ");
+  let searchResults
+
+  switch (searchType) {
     case "gender":
-      traitFilter = searchByGender(people);
+      searchResults = searchByGender(people);
       break;
     case "DOB":
-      traitFilter = searchByDOB(people);
+      searchResults = searchByDOB(people);
       break;
     case "height":
-      traitFilter = searchByHeight(people);
+      searchResults = searchByHeight(people);
       break;
     case "weight":
-      traitFilter = searchByWeight(people);
+      searchResults = searchByWeight(people);
       break;
     case "eyeColor":
-      traitFilter = searchByEyeColor(people);
+      searchResults = searchByEyeColor(people);
       break;
     case "occupation":
-      traitFilter = searchByOccupation(people);
+      searchResults = searchByOccupation(people);
       break;
     case "ID":
-      traitFilter = searchByID(people);
+      searchResults = searchByID(people);
       break;
     case "parents":
-      traitFilter = searchByParents(people);
+      searchResults = searchByParents(people);
       break;
     case "spouse":
-      traitFilter = searchBySpouse(people);
+      searchResults = searchBySpouse(people);
       break;
   }
-  return traitFilter;
-  
+  return searchResults;
+
 }
 
+function displayDescendants(person, people) {
+
+}
 
 
 //#endregion
@@ -262,7 +264,8 @@ function searchByTrait(people) {
 // alerts a list of people
 function displayPeople(people) {
   alert(people.map(function (person) {
-        return person.firstName + " " + person.lastName;}).join("\n"));
+    return person.firstName + " " + person.lastName;
+  }).join("\n"));
 }
 
 function displayPerson(person) {
@@ -276,6 +279,8 @@ function displayPerson(person) {
   personInfo += "Weight: " + person.weight + "\n";
   personInfo += "Eye Color: " + person.eyeColor + "\n";
   personInfo += "Occupation: " + person.occupation + "\n";
+  personInfo += "Parent(s) " + person.parents + "\n";
+  personInfo += "Current Spouse " + person.currentSpouse +"\n";
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
@@ -317,5 +322,3 @@ function autoValid(input) {
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
 function customValidation(input) { }
-
-//#endregion
