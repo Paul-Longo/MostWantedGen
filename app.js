@@ -95,7 +95,7 @@ function searchByName(people) {
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
-  let searchByEyeColor = promptFor("Enter an eye color." )
+  let searchByEyeColor = promptFor("Enter an eye color." , autoValid);
 
   let foundEyeColor = people.filter(function (potentialMatch) {
     if (potentialMatch.eyeColor === searchByEyeColor) {
@@ -108,7 +108,7 @@ function searchByEyeColor(people) {
 }
 
 function searchByGender(people) {
-  let genderSelection = promptFor("Enter Male or Female")
+  let genderSelection = promptFor("Enter Male or Female" , autoValid);
 
   let foundGender = people.filter(function (possibleMatch) {
     if (possibleMatch.gender === genderSelection) {
@@ -121,7 +121,7 @@ function searchByGender(people) {
 }
 
 function searchByDOB(people) {
-  let dobSelection = promptFor("Enter Date of Birth")
+  let dobSelection = promptFor("Enter Date of Birth" , autoValid);
 
   let foundDOB = people.filter(function (possibleMatch) {
     if (possibleMatch.DOB === dobSelection) {
@@ -134,7 +134,7 @@ function searchByDOB(people) {
 }
 
 function searchByHeight(people) {
-  let heightSelection = promptFor("Enter Height")
+  let heightSelection = promptFor("Enter Height" , autoValid);
 
   let foundHeight = people.filter(function (possibleMatch) {
     if (possibleMatch.DOB === heightSelection) {
@@ -147,7 +147,7 @@ function searchByHeight(people) {
 }
 
 function searchByWeight(people) {
-  let weightSelection = promptFor("Enter Weight")
+  let weightSelection = promptFor("Enter Weight" , autoValid);
 
   let foundWeight = people.filter(function (possibleMatch) {
     if (possibleMatch.Weight === weightSelection) {
@@ -160,7 +160,7 @@ function searchByWeight(people) {
 }
 
 function searchByOccupation(people) {
-  let occupationSelection = promptFor("Enter Occupation")
+  let occupationSelection = promptFor("Enter Occupation" , autoValid);
 
   let foundOccupation = people.filter(function (possibleMatch) {
     if (possibleMatch.Occupation === occupationSelection) {
@@ -213,14 +213,14 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ");
+  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eye color' , 'occupation' , 'ID' , 'parents' , 'spouse'. " , autoValid);
   let searchResults
 
   switch (searchType) {
     case "gender":
       searchResults = searchByGender(people);
       break;
-    case "DOB":
+    case "dob":
       searchResults = searchByDOB(people);
       break;
     case "height":
