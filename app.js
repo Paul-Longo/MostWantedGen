@@ -132,7 +132,8 @@ function searchByDOB(people) {
   });
   return foundDOB;
 }
-
+//
+//possibly remove this function. may be unnecessary
 function searchByHeight(people) {
   let heightSelection = promptFor("Enter height in inches" , autoValid);
 
@@ -143,7 +144,8 @@ function searchByHeight(people) {
   });
   return foundHeight;
 }
-
+//
+//possibly remove this function. may be unnecessary
 function searchByWeight(people) {
   let weightSelection = promptFor("Enter Weight in pounds(lbs)" , autoValid);
 
@@ -169,12 +171,13 @@ function searchByOccupation(people) {
   });
   return foundOccupation;
 }
-
+//
+//possibly remove this function. may be unnecessary.
 function searchById(people) {
   let idSelection = promptFor("Enter Id Number")
 
   let foundId = people.filter(function (possibleMatch) {
-    if (possibleMatch.Id === idSelection) {
+    if (possibleMatch.id === idSelection) {
       return true;
     } else {
       return false;
@@ -209,7 +212,7 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eye color' , 'occupation' , 'ID' , 'parents' , 'spouse'. " , autoValid);
+  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eye color' , 'occupation' , 'id' , 'parents' , 'spouse'. " , autoValid);
   let searchResults
 
   switch (searchType) {
@@ -231,8 +234,8 @@ function searchByTrait(people) {
     case "occupation":
       searchResults = searchByOccupation(people);
       break;
-    case "ID":
-      searchResults = searchByID(people);
+    case "id":
+      searchResults = searchById(people);
       break;
     case "parents":
       searchResults = searchByParents(people);
