@@ -197,10 +197,10 @@ function searchByParents(people) {
   return foundParents;
 }
 
-function searchByCurrentSpouse(people) {
+function searchByCurrentSpouse(myPeople, people) {
 
   let foundCurrentSpouse = people.filter(function (person) {
-    if (person.currentSpouse == person.ID) {
+    if (person.currentSpouse == myPeople.ID) {
       return true;
     } else {
       return false;
@@ -277,10 +277,10 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
-function displaySiblings(people) {
+function displaySiblings(myPeople, people) {
   let findSiblings = people.filter(function (person) {
     for (let i = 0; i < people.length; i++) {
-      if (person.parents[i] === people.parents) {
+      if (myPeople.parents[i] === myPeople.parents) {
         console.log(person.id);
         return true;
       }
@@ -299,13 +299,27 @@ function displayChildren(people) {
   return findChildren;
 }
 
-function displayFamily(person, people) {
+// function displayFamily(person, people) {
 
-  let parents = parentsSelection(person, people);
-  let siblings = findSiblings(person, people);
-  let children = findChildren(person, people);
+//   let parents = foundParents(person, people);
+//   let siblings = findSiblings(person, people);
+//   let children = findChildren(person, people);
 
-  displayPeople(parents, siblings, children);
+//   displayPeople(parents);
+//   displaySiblings(siblings);
+//   displayChildren(children);
+// }
+
+function displayDescendants(myPeople,people) {
+
+  let foundPerson = people.filter(function (person) {
+    if (person.parents[0] === myPeople.id || person.parents[1] === myPeople.id){
+      return true;
+    } else {
+      return false;
+    }
+  });
+  displayPeople(foundPerson);
 }
 
 //#endregion
