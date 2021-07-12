@@ -303,11 +303,13 @@ function displayChildren(people) {
 
 function displayFamily(person, people){
 
-  let parents = parentsSelection(person, people);
+  let parents = searchByParents(person, people);
   let siblings = findSiblings(person, people);
   let children = findChildren(person, people);
 
-  displayPeople(parents, siblings, children);
+  displayPeople(parents);
+  displaySiblings(siblings);
+  displayChildren(children);
 }
 
 //#endregion
