@@ -95,7 +95,7 @@ function searchByName(people) {
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
-  let searchByEyeColor = promptFor("Enter an eye color: brown, black, hazel, blue, green" , autoValid);
+  let searchByEyeColor = promptFor("Enter an eye color: brown, black, hazel, blue, green", autoValid);
 
   let foundEyeColor = people.filter(function (potentialMatch) {
     if (potentialMatch.eyeColor === searchByEyeColor) {
@@ -108,7 +108,7 @@ function searchByEyeColor(people) {
 }
 
 function searchByGender(people) {
-  let genderSelection = promptFor("Enter Male or Female" , autoValid);
+  let genderSelection = promptFor("Enter Male or Female", autoValid);
 
   let foundGender = people.filter(function (possibleMatch) {
     if (possibleMatch.gender === genderSelection) {
@@ -121,7 +121,7 @@ function searchByGender(people) {
 }
 
 function searchByDOB(people) {
-  let dobSelection = promptFor("Enter Date of Birth mm/dd/yyyy or m/dd/yyyy" , autoValid);
+  let dobSelection = promptFor("Enter Date of Birth mm/dd/yyyy or m/dd/yyyy", autoValid);
 
   let foundDOB = people.filter(function (possibleMatch) {
     if (possibleMatch.dob === dobSelection) {
@@ -135,19 +135,19 @@ function searchByDOB(people) {
 //
 //possibly remove this function. may be unnecessary
 function searchByHeight(people) {
-  let heightSelection = promptFor("Enter height in inches" , autoValid);
+  let heightSelection = promptFor("Enter height in inches", autoValid);
 
   let foundHeight = people.filter(function (possibleMatch) {
     if (possibleMatch.height === heightSelection) {
       return true;
-    } 
+    }
   });
   return foundHeight;
 }
 //
 //possibly remove this function. may be unnecessary
 function searchByWeight(people) {
-  let weightSelection = promptFor("Enter Weight in pounds(lbs)" , autoValid);
+  let weightSelection = promptFor("Enter Weight in pounds(lbs)", autoValid);
 
   let foundWeight = people.filter(function (possibleMatch) {
     if (possibleMatch.weight === weightSelection) {
@@ -160,7 +160,7 @@ function searchByWeight(people) {
 }
 
 function searchByOccupation(people) {
-  let occupationSelection = promptFor("Enter Occupation" , autoValid);
+  let occupationSelection = promptFor("Enter Occupation", autoValid);
 
   let foundOccupation = people.filter(function (possibleMatch) {
     if (possibleMatch.occupation === occupationSelection) {
@@ -212,7 +212,7 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eyeColor' , 'occupation' , 'id' , 'parents' , 'spouse'. " , autoValid);
+  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eyeColor' , 'occupation' , 'id' , 'parents' , 'spouse'. ", autoValid);
   let searchResults
 
   switch (searchType) {
@@ -300,21 +300,24 @@ function displayChildren(people) {
   return findChildren;
 }
 
-// function displayFamily(person, people) {
+// family tree with parents, spouse, siblings
+function displayFamily(person, people) {
+  let parents = searchByParents(people);
+  let spouse = searchByCurrentSpouse(people);
+  let siblings = displaySiblings(myPeople, people);
 
-//   let parents = foundParents(person, people);
-//   let siblings = findSiblings(person, people);
-//   let children = findChildren(person, people);
+  let familyTree = [parents, spouse, siblings];
+  for(let i = 0; i > familyTree.length; i++){
 
-//   displayPeople(parents);
-//   displaySiblings(siblings);
-//   displayChildren(children);
-// }
+  }
 
-function displayDescendants(myPeople,people) {
+}
+
+
+function displayDescendants(myPeople, people) {
 
   let foundPerson = people.filter(function (person) {
-    if (person.parents[0] === myPeople.id || person.parents[1] === myPeople.id){
+    if (person.parents[0] === myPeople.id || person.parents[1] === myPeople.id) {
       console.log(myPeople.id);
       return true;
     } else {
