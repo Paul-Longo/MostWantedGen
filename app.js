@@ -95,11 +95,7 @@ function searchByName(people) {
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
-<<<<<<< HEAD
-  let searchByEyeColor = promptFor("Enter an eye color.")
-=======
   let searchByEyeColor = promptFor("Enter an eye color." , autoValid);
->>>>>>> edd2a21e6dea78bacd51c80a2243477f46112dca
 
   let foundEyeColor = people.filter(function (potentialMatch) {
     if (potentialMatch.eyeColor === searchByEyeColor) {
@@ -202,10 +198,9 @@ function searchByParents(people) {
 }
 
 function searchByCurrentSpouse(people) {
-  let currentSpouse = promptFor("Enter Id of Spouse")
 
-  let foundCurrentSpouse = people.filter(function (possibleMatch) {
-    if (possibleMatch.currentSpouse === currentSpouse) {
+  let foundCurrentSpouse = people.filter(function (person) {
+    if (person.currentSpouse == person.ID) {
       return true;
     } else {
       return false;
@@ -216,11 +211,7 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-<<<<<<< HEAD
-  let searchType = promptFor("What trait would you like to search for?");
-=======
   let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eye color' , 'occupation' , 'ID' , 'parents' , 'spouse'. " , autoValid);
->>>>>>> edd2a21e6dea78bacd51c80a2243477f46112dca
   let searchResults
 
   switch (searchType) {
@@ -249,7 +240,7 @@ function searchByTrait(people) {
       searchResults = searchByParents(people);
       break;
     case "spouse":
-      searchResults = searchBySpouse(people);
+      searchResults = searchByCurrentSpouse(people);
       break;
   }
   return searchResults;
