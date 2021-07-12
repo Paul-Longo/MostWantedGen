@@ -7,7 +7,11 @@
 
 // app is the function called to start the entire application
 function app(people) {
+<<<<<<< HEAD
   let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+=======
+  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'",yesNo).toLowerCase();
+>>>>>>> cdf941112f915d61a9d62eaf1fbaacb02ac8cd9d
   let searchResults;
   switch (searchType) {
     case "yes":
@@ -22,7 +26,11 @@ function app(people) {
   }
 
   // Call the mainMenu function ONLY after you find the SINGLE person you are looking for
+<<<<<<< HEAD
   if (searchResults.length === 1) {
+=======
+  if (searchResults.length === 1){
+>>>>>>> cdf941112f915d61a9d62eaf1fbaacb02ac8cd9d
     mainMenu(searchResults[0], people);
 
   } else {
@@ -214,8 +222,13 @@ function searchByCurrentSpouse(people) {
 
 function searchByTrait(people) {
   let searchType = promptFor("What trait would you like to search for? ");
+<<<<<<< HEAD
   let searchResults
 
+=======
+  let searchResults 
+  
+>>>>>>> cdf941112f915d61a9d62eaf1fbaacb02ac8cd9d
   switch (searchType) {
     case "gender":
       searchResults = searchByGender(people);
@@ -246,7 +259,11 @@ function searchByTrait(people) {
       break;
   }
   return searchResults;
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> cdf941112f915d61a9d62eaf1fbaacb02ac8cd9d
 }
 
 function displayDescendants(person, people) {
