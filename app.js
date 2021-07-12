@@ -279,6 +279,28 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
+function displaySiblings(people) {
+  let findSiblings = people.filter(function (person) {
+    for (let i = 0; i < people.length; i++) {
+      if (person.parents[i] === people.parents) {
+        console.log(person.id);
+        return true;
+      }
+    }
+  });
+  return findSiblings;
+}
+
+function displayChildren(people) {
+  let findChildren = people.filter(function (person) {
+    if (person.parent[0] === person.id || person.parent[1] === person.id) {
+      console.log(person.id);
+      return true;
+    }
+  });
+  return findChildren;
+}
+
 //#endregion
 
 //Validation functions.
