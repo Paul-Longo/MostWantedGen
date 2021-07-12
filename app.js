@@ -95,10 +95,10 @@ function searchByName(people) {
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
-  let eyeColorSelection = promptFor("Enter an eye color.")
+  let searchByEyeColor = promptFor("Enter an eye color.")
 
   let foundEyeColor = people.filter(function (potentialMatch) {
-    if (potentialMatch.eyeColor === eyeColorSelection) {
+    if (potentialMatch.eyeColor === searchByEyeColor) {
       return true;
     } else {
       return false;
@@ -108,10 +108,10 @@ function searchByEyeColor(people) {
 }
 
 function searchByGender(people){
-  let genderSelection = promptFor("Enter Male or Female")
+  let searchByGender = promptFor("Enter Male or Female")
 
   let foundGender = people.filter(function(possibleMatch){
-    if (possibleMatch.gender === genderSelection){
+    if (possibleMatch.gender === searchByGender) {
       return true;
     }else {
       return false;
@@ -121,10 +121,10 @@ function searchByGender(people){
 }
 
 function searchByDOB(people){
-  let dobSelection = promptFor("Enter Date of Birth")
+  let searchByDOB = promptFor("Enter Date of Birth")
 
   let foundDOB = people.filter(function(possibleMatch){
-    if (possibleMatch.DOB === dobSelection){
+    if (possibleMatch.DOB === searchByDOB){
       return true;
     }else {
       return false;
@@ -134,10 +134,10 @@ function searchByDOB(people){
 }
 
 function searchByHeight(people){
-  let heightSelection = promptFor("Enter Height")
+  let searchByHeight = promptFor("Enter Height")
 
   let foundHeight = people.filter(function(possibleMatch){
-    if (possibleMatch.DOB === heightSelection){
+    if (possibleMatch.DOB === searchByHeight){
       return true;
     }else {
       return false;
@@ -147,10 +147,10 @@ function searchByHeight(people){
 }
 
 function searchByWeight(people){
-  let weightSelection = promptFor("Enter Weight")
+  let searchByWeight = promptFor("Enter Weight")
 
   let foundWeight = people.filter(function(possibleMatch){
-    if (possibleMatch.Weight === weightSelection){
+    if (possibleMatch.Weight === searchByWeight){
       return true;
     }else {
       return false;
@@ -160,10 +160,10 @@ function searchByWeight(people){
 }
 
 function searchByOccupation(people){
-  let occupationSelection = promptFor("Enter Occupation")
+  let searchByOccupation = promptFor("Enter Occupation")
 
   let foundOccupation = people.filter(function(possibleMatch){
-    if (possibleMatch.Occupation === occupationSelection){
+    if (possibleMatch.Occupation === searchByOccupation){
       return true;
     }else {
       return false;
@@ -173,22 +173,23 @@ function searchByOccupation(people){
 }
 
 function searchById(people){
-  let idSelection = promptFor("Enter Id Number")
+  let searchById = promptFor("Enter Id Number")
 
   let foundId = people.filter(function(possibleMatch){
-    if (possibleMatch.Id === idSelection){
+    if (possibleMatch.Id === searchById){
       return true;
     }else {
       return false;
     }
   });
   return foundId;
+}
 
   function searchByParents(people){
-    let parentsSelection = promptFor("Enter Parents")
+    let searchByParents = promptFor("Enter Parents")
   
     let foundParents = people.filter(function(possibleMatch){
-      if (possibleMatch.Parents === parentsSelection){
+      if (possibleMatch.Parents === searchByParents){
         return true;
       }else {
         return false;
@@ -196,13 +197,12 @@ function searchById(people){
     });
     return foundParents;
   }
-}
 
 function searchByCurrentSpouse(people){
-  let currentSpouse = promptFor("Enter Id of Spouse")
+  let searchByCurrentSpouse = promptFor("Enter Id of Spouse")
 
   let foundCurrentSpouse = people.filter(function(possibleMatch){
-    if (possibleMatch.currentSpouse === currentSpouse){
+    if (possibleMatch.currentSpouse === searchByCurrentSpouse){
       return true;
     }else {
       return false;
@@ -213,7 +213,7 @@ function searchByCurrentSpouse(people){
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ");
+  let searchType = promptFor("What criteria would you like to search for?")
   let searchResults 
   
   switch (searchType) {
@@ -278,6 +278,8 @@ function displayPerson(person) {
   // TODO: finish getting the rest of the information to display.
   alert(personInfo);
 }
+
+
 
 //#endregion
 
