@@ -95,7 +95,7 @@ function searchByName(people) {
 
 //unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
-  let searchByEyeColor = promptFor("Enter an eye color." )
+  let searchByEyeColor = promptFor("Enter an eye color.")
 
   let foundEyeColor = people.filter(function (potentialMatch) {
     if (potentialMatch.eyeColor === searchByEyeColor) {
@@ -184,19 +184,18 @@ function searchById(people) {
   });
   return foundId;
 }
-function searchByParents(person, people) {
-  let parentsSelection = promptFor("Enter Parents")
 
-  let foundParents = people.filter(function (possibleMatch) {
-    if (possibleMatch.Parents === parentsSelection) {
-      return true;
-    } else {
-      return false;
+function searchByParents(people) {
+  let foundParents = people.filter(function (person) {
+    if (person.parents[0] == person.parents[0] || person.parents[0] == person.parents[1]) {
+      return true
+    }
+    else if ((person.parents[0] == person.parents[0] || person.parents[0] == person.parents[1]) || (person.parents[1] == person.parents[0] || person.parent[1] == person.parent[1])) {
+      return true
     }
   });
   return foundParents;
 }
-
 
 function searchByCurrentSpouse(people) {
   let currentSpouse = promptFor("Enter Id of Spouse")
@@ -213,7 +212,7 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ");
+  let searchType = promptFor("What trait would you like to search for?");
   let searchResults
 
   switch (searchType) {
@@ -301,15 +300,13 @@ function displayChildren(people) {
   return findChildren;
 }
 
-function displayFamily(person, people){
+function displayFamily(person, people) {
 
-  let parents = searchByParents(person, people);
+  let parents = parentsSelection(person, people);
   let siblings = findSiblings(person, people);
   let children = findChildren(person, people);
 
-  displayPeople(parents);
-  displaySiblings(siblings);
-  displayChildren(children);
+  displayPeople(parents, siblings, children);
 }
 
 //#endregion
@@ -349,3 +346,5 @@ function autoValid(input) {
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
 function customValidation(input) { }
+
+
