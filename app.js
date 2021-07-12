@@ -198,10 +198,10 @@ function searchByParents(people) {
   return foundParents;
 }
 
-function searchByCurrentSpouse(myPeople, people) {
+function searchByCurrentSpouse(people) {
 
   let foundCurrentSpouse = people.filter(function (person) {
-    if (person.currentSpouse == myPeople.ID) {
+    if (person.currentSpouse == person.ID) {
       return true;
     } else {
       return false;
@@ -315,6 +315,7 @@ function displayDescendants(myPeople,people) {
 
   let foundPerson = people.filter(function (person) {
     if (person.parents[0] === myPeople.id || person.parents[1] === myPeople.id){
+      console.log(myPeople.id);
       return true;
     } else {
       return false;
