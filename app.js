@@ -121,7 +121,7 @@ function searchByGender(people) {
 }
 
 function searchByDOB(people) {
-  let dobSelection = promptFor("Enter Date of Birth" , autoValid);
+  let dobSelection = promptFor("Enter Date of Birth mm/dd/yyyy or m/dd/yyyy" , autoValid);
 
   let foundDOB = people.filter(function (possibleMatch) {
     if (possibleMatch.dob === dobSelection) {
@@ -134,20 +134,18 @@ function searchByDOB(people) {
 }
 
 function searchByHeight(people) {
-  let heightSelection = promptFor("Enter Height" , autoValid);
+  let heightSelection = promptFor("Enter height in inches" , autoValid);
 
   let foundHeight = people.filter(function (possibleMatch) {
     if (possibleMatch.height === heightSelection) {
       return true;
-    } else {
-      return false;
-    }
+    } 
   });
   return foundHeight;
 }
 
 function searchByWeight(people) {
-  let weightSelection = promptFor("Enter Weight" , autoValid);
+  let weightSelection = promptFor("Enter Weight in pounds(lbs)" , autoValid);
 
   let foundWeight = people.filter(function (possibleMatch) {
     if (possibleMatch.weight === weightSelection) {
@@ -169,7 +167,7 @@ function searchByOccupation(people) {
       return false;
     }
   });
-  return(foundOccupation);
+  return foundOccupation;
 }
 
 function searchById(people) {
@@ -227,7 +225,7 @@ function searchByTrait(people) {
     case "weight":
       searchResults = searchByWeight(people);
       break;
-    case "eyecolor":
+    case "eyeColor":
       searchResults = searchByEyeColor(people);
       break;
     case "occupation":
