@@ -1,9 +1,6 @@
 "use strict";
 
-//Menu functions.
-//Used for the overall flow of the application.
-/////////////////////////////////////////////////////////////////
-//#region
+
 
 // app is the function called to start the entire application
 function app(people) {
@@ -68,9 +65,7 @@ function mainMenu(person, people) {
 
 
 
-//#region
-
-//nearly finished function used to search through an array of people to find matching first and last name and return a SINGLE person object.
+//searches through an array of people to find matching first and last name and return a SINGLE person object.
 function searchByName(people) {
   let firstName = promptFor("What is the person's first name?", autoValid);
   let lastName = promptFor("What is the person's last name?", autoValid);
@@ -82,11 +77,9 @@ function searchByName(people) {
       return false;
     }
   });
-  // TODO: find the person single person object using the name they entered.
   return foundPerson;
 }
 
-//unfinished function to search through an array of people to find matching eye colors. Use searchByName as reference.
 function searchByEyeColor(people) {
   let searchByEyeColor = promptFor("Enter an eye color: brown, black, hazel, blue, green", autoValid);
 
@@ -126,7 +119,6 @@ function searchByDOB(people) {
   return foundDOB;
 }
 //
-//possibly remove this function. may be unnecessary
 function searchByHeight(people) {
   let heightSelection = promptFor("Enter height in inches", autoValid);
 
@@ -138,7 +130,6 @@ function searchByHeight(people) {
   return foundHeight;
 }
 //
-//possibly remove this function. may be unnecessary
 function searchByWeight(people) {
   let weightSelection = promptFor("Enter Weight in pounds(lbs)", autoValid);
 
@@ -165,7 +156,6 @@ function searchByOccupation(people) {
   return foundOccupation;
 }
 //
-//possibly remove this function. may be unnecessary.
 function searchById(people) {
   let idSelection = promptFor("Enter Id Number")
 
@@ -203,7 +193,7 @@ function searchByCurrentSpouse(people) {
   return foundCurrentSpouse;
 }
 
-
+//Able to search for more then one trait at once
 function searchByTrait(people) {
   let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eyeColor' , 'occupation' , 'id' , 'parents' , 'spouse'. If more then type multi ", autoValid);
   let searchResults
@@ -251,9 +241,10 @@ function displayPeople(people) {
   }).join("\n"));
 }
 
+// print all of the information about a person:
+// height, weight, age, name, occupation, eye color.
 function displayPerson(person) {
-  // print all of the information about a person:
-  // height, weight, age, name, occupation, eye color.
+  
   let personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo += "Gender: " + person.gender + "\n";
@@ -264,7 +255,7 @@ function displayPerson(person) {
   personInfo += "Occupation: " + person.occupation + "\n";
   personInfo += "Parent(s) " + person.parents + "\n";
   personInfo += "Current Spouse " + person.currentSpouse + "\n";
-  // TODO: finish getting the rest of the information to display.
+
   alert(personInfo);
 }
 
@@ -360,12 +351,7 @@ function displayDescendants(myPeople, people) {
   displayPeople(foundPerson);
 }
 
-//#endregion
 
-//Validation functions.
-//Functions to validate user input.
-/////////////////////////////////////////////////////////////////
-//#region
 
 //a function that takes in a question to prompt, and a callback function to validate the user input.
 //response: Will capture the user input.
@@ -388,16 +374,14 @@ function yesNo(input) {
   }
 }
 
-function autoValid(input) {
-  return true; // default validation only
-}
+
 // helper function to pass in as default promptFor validation.
 //this will always return true for all inputs.
 
-
-//Unfinished validation function you can use for any of your custom validation callbacks.
-//can be used for things like eye color validation for example.
-function customValidation(input) {
-  return true;
+function autoValid(input) {
+  return true; // default validation only
 }
+
+
+
 
