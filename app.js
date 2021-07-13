@@ -320,35 +320,32 @@ function displayChildren(people) {
 }
 
 //Family Tree still in progress
-
-//family tree with parents, spouse, siblings
-// function displayFamily(myPeople, people) {
-//   let parents = searchByParents(people);
-//   let spouse = searchByCurrentSpouse(people);
-//   let siblings = displaySiblings(myPeople, people);
-
-//   let familyTree = (parents, spouse, siblings);
-//   for(let i = 0; i > familyTree.length; i++){
-//     displayFamily(familyTree[i]);
-//     return true;
-//   }  
-//  alert(familyTree); 
-// }
-// function displayFamily(people) {
-//   alert(people.map(function (person) {
-//     return person.firstName + " " + person.lastName;
-//   }).join("\n"));
-// }
-
-//Works but only shows ID numbers
-function displayFamily(person){
-
-let personInfo = "Parent: " + person.parents + "\n";
-personInfo += "Current Spouse " + person.currentSpouse + "\n";
-
-alert(personInfo);
+/*
+function displayFamily(people) {
+  let personInfo = [];
+  if (personInfo == people.parents) {
+    return true;
+  }
+  if (personInfo == people.current){
+    return true;
+  }
+  if (personInfo == people.siblings){
+    return true;
+  }
+  alert(personInfo);
+  mainMenu(person, people);
 }
+*/
 
+//Works but only shows Parents and ID numbers
+function displayFamily(person) {
+  let personInfo =[];
+  personInfo += "Parent: " + person.parents + "\n";
+  personInfo += "Current Spouse " + person.currentSpouse + "\n";
+  personInfo += "Siblings " + person.siblings;
+
+  alert(personInfo);
+}
 
 function displayDescendants(myPeople, people) {
 
@@ -400,5 +397,7 @@ function autoValid(input) {
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
-function customValidation(input) { }
+function customValidation(input) {
+  return true;
+}
 
