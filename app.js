@@ -66,13 +66,6 @@ function mainMenu(person, people) {
   }
 }
 
-//#endregion
-
-//Filter functions.
-//Ideally you will have a function for each trait.
-/////////////////////////////////////////////////////////////////
-
-//deleted functions of traits 
 
 
 //#region
@@ -212,7 +205,7 @@ function searchByCurrentSpouse(people) {
 
 
 function searchByTrait(people) {
-  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eyeColor' , 'occupation' , 'id' , 'parents' , 'spouse'. ", autoValid);
+  let searchType = promptFor("What trait would you like to search for? ' gender' , 'dob' , 'height' , 'weight' , 'eyeColor' , 'occupation' , 'id' , 'parents' , 'spouse'. If more then type multi ", autoValid);
   let searchResults
 
   switch (searchType) {
@@ -243,16 +236,13 @@ function searchByTrait(people) {
     case "spouse":
       searchResults = searchByCurrentSpouse(people);
       break;
+    case "multi":
+      searchResults = searchByMultipleTraits(people);
+      break;
   }
   return searchResults;
 }
 
-//#endregion
-
-//Display functions.
-//Functions for user interface.
-/////////////////////////////////////////////////////////////////
-//#region
 
 // alerts a list of people
 function displayPeople(people) {
@@ -278,6 +268,35 @@ function displayPerson(person) {
   alert(personInfo);
 }
 
+function searchByMultipleTraits(people) {
+  let searchResults = people;
+  let gender = promptFor("Do you know what the gender of this person?", yesNo);
+  if (gender == "yes") {
+    searchResults = searchByEyeColor(searchResults);
+  }
+  let DOB = promptFor("Do you know their date of birth? mm/dd/yyyy", yesNo);
+  if (DOB == "yes") {
+    searchResults = dob(searchResults);
+  }
+  let height = promptFor("Do you know their height? (inches)", yesNo);
+  if (height == "yes") {
+    searchResults = searchByHeight(searchResults);
+  }
+  let weight = promptFor("Do you know how much they weigh? (pounds)", yesNo);
+  if (weight == "yes") {
+    searchResults = searchByWeight(searchResults);
+  }
+  let eyecolor = promptFor("Do you know their eye color?", yesNo);
+  if (eyecolor == "yes") {
+    searchResults = searchByEyeColor(searchResults);
+  }
+  let occupation = promptFor("Do you know their occupation?", yesNo);
+  if (occupation == "yes") {
+    searchResults = searchByOccupation(searchResults);
+  }
+  return searchResults;
+}
+
 function displaySiblings(myPeople, people) {
   let findSiblings = people.filter(function (person) {
     for (let i = 0; i < people.length; i++) {
@@ -300,17 +319,34 @@ function displayChildren(people) {
   return findChildren;
 }
 
-// family tree with parents, spouse, siblings
-function displayFamily(person, people) {
-  let parents = searchByParents(people);
-  let spouse = searchByCurrentSpouse(people);
-  let siblings = displaySiblings(myPeople, people);
+//Family Tree still in progress
 
-  let familyTree = [parents, spouse, siblings];
-  for(let i = 0; i > familyTree.length; i++){
+//family tree with parents, spouse, siblings
+// function displayFamily(myPeople, people) {
+//   let parents = searchByParents(people);
+//   let spouse = searchByCurrentSpouse(people);
+//   let siblings = displaySiblings(myPeople, people);
 
-  }
+//   let familyTree = (parents, spouse, siblings);
+//   for(let i = 0; i > familyTree.length; i++){
+//     displayFamily(familyTree[i]);
+//     return true;
+//   }  
+//  alert(familyTree); 
+// }
+// function displayFamily(people) {
+//   alert(people.map(function (person) {
+//     return person.firstName + " " + person.lastName;
+//   }).join("\n"));
+// }
 
+//Works but only shows ID numbers
+function displayFamily(person){
+
+let personInfo = "Parent: " + person.parents + "\n";
+personInfo += "Current Spouse " + person.currentSpouse + "\n";
+
+alert(personInfo);
 }
 
 
@@ -355,14 +391,14 @@ function yesNo(input) {
   }
 }
 
-// helper function to pass in as default promptFor validation.
-//this will always return true for all inputs.
 function autoValid(input) {
   return true; // default validation only
 }
+// helper function to pass in as default promptFor validation.
+//this will always return true for all inputs.
+
 
 //Unfinished validation function you can use for any of your custom validation callbacks.
 //can be used for things like eye color validation for example.
 function customValidation(input) { }
-
 
